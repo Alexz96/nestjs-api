@@ -26,6 +26,12 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Versions
+- NodeJS: 22.14
+
+## Technologies
+- NestJS: 11.0.1
+
 ## Project setup
 
 ```bash
@@ -39,7 +45,7 @@ $ npm install
 $ npm run start
 
 # watch mode
-$ npm run start:dev
+$ npm run dev
 
 # production mode
 $ npm run start:prod
