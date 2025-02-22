@@ -4,6 +4,7 @@ import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { Wallet } from './entities/wallet.entity';
 import mongoose, { Model } from 'mongoose';
 import { WalletAsset } from './entities/wallet-asset.entity';
+import { Asset } from 'src/assets/entities/asset.entity';
 
 @Injectable()
 export class WalletsService {
@@ -28,7 +29,9 @@ export class WalletsService {
         path: 'assets', // walletAssets apesar de estar so assets
         populate: ['asset'],
       },
-    ]);
+    ]) as Promise<
+      (Wallet & { assets: (WalletAsset & { asset: Asset })[] }) | null
+    >;
   }
 
   async createWalletAsset(data: {

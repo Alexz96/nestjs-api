@@ -19,7 +19,6 @@ export class Wallet {
 
   // exclamacao indica apenas a modelagem dos dados, nao gerara em compilacao
   createdAt!: Date;
-
   updatedAt!: Date;
 }
 

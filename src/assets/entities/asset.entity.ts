@@ -22,10 +22,7 @@ export class Asset {
   price: number;
 
   // exclamacao indica apenas a modelagem dos dados, nao gerara em compilacao
-  @Prop()
   createdAt!: Date;
-
-  @Prop()
   updatedAt!: Date;
 }
 
