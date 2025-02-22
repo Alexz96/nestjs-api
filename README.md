@@ -51,6 +51,17 @@ $ npm run dev
 $ npm run start:prod
 ```
 
+## Initialize database from docker
+
+```bash
+$ docker compose up
+```
+
+## Serve images from assets
+```bash
+$ npx serve -l tcp://127.0.0.1:9000 ./assets
+```
+
 ## Run tests
 
 ```bash

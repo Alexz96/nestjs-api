@@ -26,8 +26,8 @@ export class WalletsService {
     return this.walletSchema.findById(id).populate([
       {
         path: 'assets', // walletAssets apesar de estar so assets
-        populate: ['asset']
-      }
+        populate: ['asset'],
+      },
     ]);
   }
 
