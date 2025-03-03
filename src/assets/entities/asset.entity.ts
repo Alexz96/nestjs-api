@@ -4,7 +4,14 @@ import { HydratedDocument } from 'mongoose';
 
 export type AssetDocument = HydratedDocument<Asset>;
 
-@Schema({ timestamps: true }) // com isso o mongoose interpreta a collection e define os campos de criacao e atualizacao
+@Schema({
+  timestamps: true,
+  collectionOptions: {
+    changeStreamPreAndPostImages: {
+      enabled: true,
+    },
+  },
+}) // com isso o mongoose interpreta a collection e define os campos de criacao e atualizacao
 export class Asset {
   @Prop({ default: () => crypto.randomUUID() })
   _id: string;
