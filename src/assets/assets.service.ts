@@ -23,7 +23,7 @@ export class AssetsService {
 
   // ? a ideia do metodo eh prover a alteracao realizada, quem estiver utilizando que decide o que fazer
   // ? seja enviar email, notificacao push...
-  subscribeEvents() {
+  subscribeNewPriceChangedEvents(): Observable<Asset> {
     return new Observable((observer) => {
       this.assetSchema
         .watch(
@@ -52,10 +52,7 @@ export class AssetsService {
           }
 
           const asset = await this.assetSchema.findById(data.fullDocument._id);
-          observer.next({
-            event: 'asset-updated',
-            data: asset!,
-          })
+          observer.next(asset!);
         });
     });
   }
