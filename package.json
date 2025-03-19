@@ -21,9 +21,11 @@
     "assets-image": "npx serve -l tcp://127.0.0.1:9000 ./assets"
   },
   "dependencies": {
+    "@confluentinc/kafka-javascript": "^1.2.0",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/mapped-types": "*",
+    "@nestjs/microservices": "^11.0.11",
     "@nestjs/mongoose": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/platform-socket.io": "^11.0.10",

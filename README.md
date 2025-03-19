@@ -62,6 +62,11 @@ $ docker compose up
 $ npx serve -l tcp://127.0.0.1:9000 ./assets
 ```
 
+## Run Kafka listener
+```bash
+npm run dev -- --entryFile _cmd/kafka.cmd
+```
+
 ## Run tests
 
 ```bash
