@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import mongoose, { HydratedDocument } from 'mongoose';
 import { Asset, AssetDocument } from 'src/assets/entities/asset.entity';
 import { Wallet, WalletDocument } from 'src/wallets/entities/wallet.entity';
+import { Trade } from './trade.entity';
 
 export type OrderDocument = HydratedDocument<Order>;
 
@@ -18,7 +19,8 @@ export enum OrderStatus {
   FAILED = 'FAILED',
 }
 
-@Schema({ timestamps: true }) // com isso o mongoose interpreta a collection e define os campos de criacao e atualizacao
+// ? aplicamos o travamento otimista com o optimisticConcurrency
+@Schema({ timestamps: true, optimisticConcurrency: true }) // com isso o mongoose interpreta a collection e define os campos de criacao e atualizacao
 export class Order {
   @Prop({ default: () => crypto.randomUUID() })
   _id: string;
@@ -44,11 +46,11 @@ export class Order {
   @Prop()
   status: OrderStatus;
 
-  // exclamacao indica apenas a modelagem dos dados, nao gerara em compilacao
-  @Prop()
-  createdAt!: Date;
+  @Prop({ type: [mongoose.Schema.Types.String], ref: 'Trade' })
+  trades: Trade[] | string[];
 
-  @Prop()
+  // exclamacao indica apenas a modelagem dos dados, nao gerara em compilacao
+  createdAt!: Date;
   updatedAt!: Date;
 }
 

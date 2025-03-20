@@ -6,7 +6,7 @@ import { Asset, AssetDocument } from 'src/assets/entities/asset.entity';
 
 export type WalletAssetDocument = HydratedDocument<WalletAsset>;
 
-@Schema({ timestamps: true }) // com isso o mongoose interpreta a collection e define os campos de criacao e atualizacao
+@Schema({ timestamps: true, optimisticConcurrency: true }) // com isso o mongoose interpreta a collection e define os campos de criacao e atualizacao
 export class WalletAsset {
   @Prop({ default: () => crypto.randomUUID() })
   _id: string;
